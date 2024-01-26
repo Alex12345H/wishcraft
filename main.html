@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minecraft Wish Edition</title>
+    <style>
+        /* CSS-Styling für den Spielbereich */
+        #game {
+            width: 600px;
+            height: 400px;
+            border: 1px solid black;
+            position: relative;
+        }
+        
+        /* CSS-Styling für die Blöcke */
+        .block {
+            width: 50px;
+            height: 50px;
+            background-color: gray;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <!-- Hier werden die Blöcke platziert -->
+    </div>
+
+    <script>
+        // JavaScript-Code für das Platzieren und Entfernen von Blöcken
+        var game = document.getElementById('game');
+        
+        game.addEventListener('click', function(event) {
+            var block = document.createElement('div');
+            block.className = 'block';
+            block.style.left = (event.clientX - game.offsetLeft) + 'px';
+            block.style.top = (event.clientY - game.offsetTop) + 'px';
+            game.appendChild(block);
+        });
+        
+        game.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            game.removeChild(event.target);
+        });
+    </script>
+</body>
+</html>
